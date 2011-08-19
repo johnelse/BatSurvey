@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, BatSurvey!</string>
+    <string name="app_name">BatSurvey</string>
+    <string name="new_survey">New</string>
+    <string name="delete_survey">Delete</string>
+    <string name="no_surveys">No surveys</string>
+    <string name="enter_text">Enter text</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string-array name="bat_types">
+        <item>Common pipistrelle</item>
+        <item>Soprano pipistrelle</item>
+        <item>Daubenton\'s bat</item>
+        <item>Nathusius pipistrelle</item>
+    </string-array>
+</resources>
