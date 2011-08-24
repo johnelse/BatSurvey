@@ -42,6 +42,9 @@ public class BatSurvey extends ListActivity {
         }
     }
     
+    private ArrayList<Survey> surveys = null;
+    private SurveyAdapter adapter;
+    
     private void makeToast(String message) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
@@ -49,32 +52,37 @@ public class BatSurvey extends ListActivity {
         toast.show();
     }
     
-    private void chooseSurveyName(final Survey s) {
-        makeToast("starting");
+    private void createSurvey() {
+        // Create a dialog for entering the survey name,
+        // then add the created survey to the list.
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         //alert.setTitle(R.string.enter_text);
         //alert.setMessage(R.string.enter_text);
-        
+
         final EditText input = new EditText(this);
         alert.setView(input);
         
         alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-                s.setName(input.getText().toString());
+                String name = input.getText().toString();
+                if (name.length() != 0) {
+                    Survey s = new Survey();
+                    s.setName(name);
+                    surveys.add(s);
+                    adapter.notifyDataSetChanged();
+                }
+                dialog.dismiss();
             }
         });
-        /*alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+        alert.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                s.setName("erk");
+            public void onClick(DialogInterface dialog, int whichBUtton) {
+                dialog.cancel();
             }
-        });*/
+        });
         alert.show();
     }
-    
-    private ArrayList<Survey> surveys = null;
-    private SurveyAdapter adapter;
     
     /** Called when the activity is first created. */
     @Override
@@ -91,11 +99,7 @@ public class BatSurvey extends ListActivity {
         new_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Survey s = new Survey();
-                chooseSurveyName(s);
-                s.setName("abc");
-                surveys.add(s);
-                adapter.notifyDataSetChanged();
+                createSurvey();
             }
         });
         
