@@ -63,6 +63,7 @@ public class BatSurvey extends ListActivity {
         alert.setTitle(R.string.enter_text);
         
         final EditText input = new EditText(this);
+        input.setSingleLine(true);
         alert.setView(input);
         
         alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
