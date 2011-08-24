@@ -56,13 +56,12 @@ public class BatSurvey extends ListActivity {
         // Create a dialog for entering the survey name,
         // then add the created survey to the list.
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        //alert.setTitle(R.string.enter_text);
-        //alert.setMessage(R.string.enter_text);
-
+        alert.setTitle(R.string.enter_text);
+        
         final EditText input = new EditText(this);
         alert.setView(input);
         
-        alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 String name = input.getText().toString();
@@ -75,7 +74,7 @@ public class BatSurvey extends ListActivity {
                 dialog.dismiss();
             }
         });
-        alert.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichBUtton) {
                 dialog.cancel();
