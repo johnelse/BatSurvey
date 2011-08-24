@@ -1,6 +1,7 @@
 package com.utils.batsurvey;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -34,9 +35,18 @@ public class BatSurvey extends ListActivity {
             }
             Survey s = items.get(position);
             if (s != null) {
-                TextView t = (TextView) v.findViewById(R.id.survey_name);
-                if (t != null) {
-                    t.setText(s.getName());
+                TextView nameTextView = (TextView) v.findViewById(R.id.survey_name);
+                if (nameTextView != null) {
+                    nameTextView.setText(s.getName());
+                }
+                TextView dateTextView = (TextView) v.findViewById(R.id.survey_date);
+                if (dateTextView != null) {
+                    Date date = s.getDate();
+                    String dateString = String.format("%02d/%02d/%04d",
+                        date.getDay(),
+                        date.getMonth(),
+                        date.getYear());
+                    dateTextView.setText(dateString);
                 }
             }
             return v;
@@ -61,7 +71,9 @@ public class BatSurvey extends ListActivity {
                 String name = input.getText().toString();
                 if (name.length() != 0) {
                     Survey s = new Survey();
+                    Date date = new Date();
                     s.setName(name);
+                    s.setDate(date);
                     surveys.add(s);
                     adapter.notifyDataSetChanged();
                 }
