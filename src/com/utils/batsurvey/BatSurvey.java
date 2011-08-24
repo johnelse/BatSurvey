@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class BatSurvey extends ListActivity {
     // Links a list of Surveys to a ListView of survey_item views.
@@ -44,13 +43,6 @@ public class BatSurvey extends ListActivity {
     
     private ArrayList<Survey> surveys = null;
     private SurveyAdapter adapter;
-    
-    private void makeToast(String message) {
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, message, duration);
-        toast.show();
-    }
     
     private void createSurvey() {
         // Create a dialog for entering the survey name,
