@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class BatSurvey extends ListActivity {
@@ -75,6 +77,26 @@ public class BatSurvey extends ListActivity {
         alert.show();
     }
     
+    private void removeCheckedItems() {
+        ListView listView = this.getListView();
+        int itemCount = listView.getChildCount();
+        // Create a list of items to be removed.
+        ArrayList<Survey> toRemove = new ArrayList<Survey>();
+        for (int i = 0; i < itemCount; i++) {
+            View v = listView.getChildAt(i);
+            CheckBox c = (CheckBox) v.findViewById(R.id.survey_check);
+            if (c.isChecked()) {
+                toRemove.add(this.surveys.get(i));
+                c.setChecked(false);
+            }
+        }
+        // Remove the items from the list and update the adapter.
+        for (int i = 0; i < toRemove.size(); i++) {
+            this.surveys.remove(toRemove.get(i));
+        }
+        this.adapter.notifyDataSetChanged();
+    }
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,8 +121,7 @@ public class BatSurvey extends ListActivity {
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                
+                removeCheckedItems();
             }
         });
     }
