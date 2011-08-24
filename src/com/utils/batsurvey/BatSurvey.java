@@ -1,6 +1,7 @@
 package com.utils.batsurvey;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import android.app.AlertDialog;
@@ -42,10 +43,12 @@ public class BatSurvey extends ListActivity {
                 TextView dateTextView = (TextView) v.findViewById(R.id.survey_date);
                 if (dateTextView != null) {
                     Date date = s.getDate();
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(date);
                     String dateString = String.format("%02d/%02d/%04d",
-                        date.getDay(),
-                        date.getMonth(),
-                        date.getYear());
+                        calendar.get(Calendar.DAY_OF_MONTH),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.YEAR));
                     dateTextView.setText(dateString);
                 }
             }
