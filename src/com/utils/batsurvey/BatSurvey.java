@@ -86,7 +86,7 @@ public class BatSurvey extends ListActivity {
         });
         alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int whichBUtton) {
+            public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.cancel();
             }
         });
