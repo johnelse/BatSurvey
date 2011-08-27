@@ -113,6 +113,11 @@ public class BatSurvey extends ListActivity {
         this.adapter.notifyDataSetChanged();
     }
     
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        // TODO - Add handler
+    }
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
